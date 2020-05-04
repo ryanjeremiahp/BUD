@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BUD</string>
+    <string name="home_view">Home View</string>
 </resources>
