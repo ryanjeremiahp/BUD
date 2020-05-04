@@ -3,4 +3,7 @@
     <string name="home_view">Home View</string>
     <string name="your_username">Your Username</string>
     <string name="current_balance">current_balance</string>
+
+    <string name = "navigation_drawer_open">Open navigation drawer</string>
+    <string name = "navigation_drawer_closer">Close navigation drawer</string>
 </resources>
