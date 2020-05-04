@@ -10,13 +10,13 @@ import android.support.v7.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
 
-    DatabaseHelper databaseHelper;
+    DatabaseHelper database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //databaseHelper = new DatabaseHelper(this);
+        database = new DatabaseHelper(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
