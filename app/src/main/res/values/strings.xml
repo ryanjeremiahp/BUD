@@ -6,4 +6,6 @@
 
     <string name = "navigation_drawer_open">Open navigation drawer</string>
     <string name = "navigation_drawer_closer">Close navigation drawer</string>
+    <string name="about">About</string>
+    <string name="your_finance_page">Your Finance Page</string>
 </resources>
