@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table " + TABLE_NAME + "(" +
                 LineItemID_COL1 + " integer primary key autoincrement not null," +
                 Account_COL2 + " text not null," +
-                Date_COL3 + " text not null," +
+                Date_COL3 + " blob not null," +
                 Total_COL4 + " real not null," +
                 Category_COL5 + " text not null," +
                 Place_COL6 + " text not null," +
