@@ -9,7 +9,7 @@ import android.support.annotation.Nullable;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "budget.db";
-    public static final String TABLE_NAME = "transactions.db";
+    public static final String TABLE_NAME = "Transactions";
     public static final String LineItemID_COL1 = "LineItemID";
     public static final String Account_COL2 = "Account";
     public static final String Date_COL3 = "Date";
@@ -30,15 +30,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         //create transaction table
-        sqLiteDatabase.execSQL("create table " + TABLE_NAME +
-                        LineItemID_COL1 + "(integer primary key autoincrement not null," +
-                        Account_COL2 + " text not null," +
-                        Date_COL3 + " text not null," +
-                        Total_COL4 + " real not null," +
-                        Category_COL5 + " text not null," +
-                        Place_COL6 + " text not null," +
-                        Notes_COL7 + " text," +
-                        Subcategory_COL8 + "text)");
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME + "(" +
+                LineItemID_COL1 + " integer primary key autoincrement not null," +
+                Account_COL2 + " text not null," +
+                Date_COL3 + " text not null," +
+                Total_COL4 + " real not null," +
+                Category_COL5 + " text not null," +
+                Place_COL6 + " text not null," +
+                Notes_COL7 + " text," +
+                Subcategory_COL8 + " text)");
     }
 
 
