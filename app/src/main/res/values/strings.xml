@@ -8,4 +8,27 @@
     <string name="navigation_drawer_closer">Close navigation drawer</string>
     <string name="about">About</string>
     <string name="your_finance_page">Your Finance Page</string>
+
+
+    <string-array name="accountChoices">
+        <item>Checking</item>
+        <item>Savings</item>
+        <item>Credit</item>
+    </string-array>
+
+    <string-array name="categoryChoices">
+        <item>-Please Choose-</item>
+        <item>Housing</item>
+        <item>Transportation</item>
+        <item>Food</item>
+        <item>Utilities</item>
+        <item>Medical</item>
+        <item>Savings</item>
+        <item>Personal</item>
+    </string-array>
+
+    <string-array name="subcategoryChoices">
+        <item></item>
+    </string-array>
+
 </resources>

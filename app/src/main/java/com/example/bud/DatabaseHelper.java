@@ -51,8 +51,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertData(String account, String date, double total, String category, String place, String notes, String subcategory) {
+    public boolean insertData(String account, String date, String total, String category, String place, String notes, String subcategory) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
         ContentValues contentValues = new ContentValues();
         contentValues.put(Account_COL2, account);
         contentValues.put(Date_COL3, date);

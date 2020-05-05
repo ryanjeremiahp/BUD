@@ -5,108 +5,81 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddTransactionActivity extends AppCompatActivity {
 
-    private Spinner accountChooser;
-    private Spinner categoryChooser;
-    private Spinner subcategoryChooser;
+    DatabaseHelper database;
 
+    private EditText dateEntered, totalEntered, placeEntered, notesEntered;
+    private Spinner accountChooser, categoryChooser, subcategoryChooser;
+    private Button addTransaction;
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
+        database = new DatabaseHelper(this);
 
+        dateEntered = findViewById(R.id.DateEntered);
+        totalEntered = findViewById(R.id.TotalEntered);
+        placeEntered = findViewById(R.id.PlaceEntered);
+        notesEntered = findViewById(R.id.NotesEntered);
 
         accountChooser = findViewById(R.id.AccountChooser);
-
-        List<String> accountList = new ArrayList<>();
-        accountList.add("Checking");
-        accountList.add("Savings");
-        accountList.add("Credit");
-
-        ArrayAdapter<String> accountAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, accountList);
+        ArrayAdapter<CharSequence> accountAdapter =
+                ArrayAdapter.createFromResource(this, R.array.accountChoices,android.R.layout.simple_spinner_item);
         accountAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         accountChooser.setAdapter(accountAdapter);
 
-        accountChooser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String currentAccount = accountChooser.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
 
         categoryChooser = findViewById(R.id.CategoryChooser);
-
-        List<String> categoryList = new ArrayList<>();
-        categoryList.add("-Please Choose-");
-        categoryList.add("Housing");
-        categoryList.add("Transportation");
-        categoryList.add("Food");
-        categoryList.add("Utilities");
-        categoryList.add("Medical");
-        categoryList.add("Savings");
-        categoryList.add("Personal");
-
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryList);
+        ArrayAdapter<CharSequence> categoryAdapter =
+                ArrayAdapter.createFromResource(this, R.array.categoryChoices, android.R.layout.simple_spinner_item);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categoryChooser.setAdapter(categoryAdapter);
 
-        categoryChooser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String currentAccount = categoryChooser.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
 
         subcategoryChooser = findViewById(R.id.SubcategoryChooser);
-
-        List<String> subcategoryList = new ArrayList<>();
-        categoryList.add("-Please Choose-");
-        categoryList.add("Insurance");
-        categoryList.add("Rent");
-        categoryList.add("Loan Payment");
-        categoryList.add("Gas");
-        categoryList.add("Maintenance");
-        categoryList.add("Fast Food");
-        categoryList.add("Grocery");
-        categoryList.add("Lifestyle Expense");
-        categoryList.add("Recreation/Entertainment");
-        categoryList.add("Miscellaneous");
-
-
-        ArrayAdapter<String> subcategoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, subcategoryList);
+        ArrayAdapter<CharSequence> subcategoryAdapter =
+                ArrayAdapter.createFromResource(this, R.array.subcategoryChoices, android.R.layout.simple_spinner_item);
         subcategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        subcategoryChooser.setAdapter(categoryAdapter);
+        subcategoryChooser.setAdapter(subcategoryAdapter);
 
-        subcategoryChooser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String currentAccount = subcategoryChooser.getSelectedItem().toString();
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+        addTransaction = findViewById(R.id.AddTransaction);
 
-            }
-        });
+
+        AddTransaction();
+    }
+
+    public void AddTransaction() {
+        addTransaction.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        boolean isAdded = database.insertData(accountChooser.toString(),
+                                dateEntered.toString(),
+                                totalEntered.toString(),
+                                categoryChooser.toString(),
+                                placeEntered.toString(),
+                                notesEntered.toString(),
+                                subcategoryChooser.toString());
+                        if (isAdded) {
+                            Toast.makeText(AddTransactionActivity.this, "The transaction has been added", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(AddTransactionActivity.this, "Transaction could not be added", Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                }
+        );
     }
 }
