@@ -134,8 +134,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="% of Transportation Spending YTD"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/LoanPaymentofTransportation"
-        tools:layout_editor_absoluteX="97dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/GasOfTransport"

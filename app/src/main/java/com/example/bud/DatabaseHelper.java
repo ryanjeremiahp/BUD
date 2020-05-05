@@ -14,6 +14,7 @@ import java.util.Calendar;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "budget.db";
+
     public static final String TABLE_NAME = "Transactions";
 
     public static final String LineItemID_COL1 = "LineItemID";
