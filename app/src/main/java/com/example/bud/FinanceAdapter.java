@@ -53,6 +53,18 @@ public class FinanceAdapter extends RecyclerView.Adapter<FinanceAdapter.FinanceV
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mCursor.getCount();
+    }
+
+    public void swapCursor(Cursor newCursor) {
+        if (mCursor != null) {
+            mCursor.close();
+        }
+
+        mCursor = newCursor;
+
+        if (newCursor != null) {
+            notifyDataSetChanged();
+        }
     }
 }
