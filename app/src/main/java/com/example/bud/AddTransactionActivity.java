@@ -23,7 +23,8 @@ public class AddTransactionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
-        database = new DatabaseHelper(this);
+        //todo - Make this use the same data as the Main ---- just comment out?
+        //database = new DatabaseHelper(this);
 
         dateEntered = findViewById(R.id.DateEntered);
         totalEntered = findViewById(R.id.TotalEntered);

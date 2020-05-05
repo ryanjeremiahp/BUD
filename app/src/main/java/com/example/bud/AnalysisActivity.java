@@ -57,4 +57,6 @@ public class AnalysisActivity extends AppCompatActivity {
         builder.setMessage(message);
         builder.show();
     }
+
+    //todo add other button functionality
 }

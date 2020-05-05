@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "budget.db";
@@ -76,5 +79,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor result = database.rawQuery("select * from " + TABLE_NAME, null);
         return result;
+    }
+
+    public Cursor getMTDList() {
+        String likeDate = "'" + getMonth() + "/__/" + getYear() + "'";
+
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor result = database.rawQuery("select * from " + TABLE_NAME +
+                        " where Date like " + likeDate
+                , null);
+        return result;
+    }
+
+    public Cursor getYTDList() {
+        String likeDate = "'__/__/" + getYear() + "'";
+
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor result = database.rawQuery("select * from " + TABLE_NAME +
+                        " where Date like " + likeDate
+                , null);
+        return result;
+    }
+
+    public String getMonth () {
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH)+1;
+
+        String monthString = Integer.toString(month);
+        if (monthString.length() <2) {
+            monthString = '0' + monthString;
+        }
+
+        return monthString;
+    }
+
+    public String getYear () {
+        Calendar calendar = Calendar.getInstance();
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        return year;
     }
 }

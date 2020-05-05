@@ -9,17 +9,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
-    //Wilfredo made these two lines
-    private SQLiteDatabase mDatabase;
-    private FinanceAdapter mAdapter;
+    //Wilfredo made these two lines'
+    /*private SQLiteDatabase mDatabase;
+    private FinanceAdapter mAdapter;*/
+
+    DatabaseHelper database;
 
 
 
@@ -27,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        database = new DatabaseHelper(this);
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -48,19 +48,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_addTransaction);
         }
 
-        /*//Wilfredo wrote these Lines (5/5/2020 11:38 A.M.)
-        //-----------------------------------
+      /*  //Wilfredo wrote these two lines
         DatabaseHelper dbHelper = new DatabaseHelper(this);
-        mDatabase = dbHelper.getWritableDatabase();
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new FinanceAdapter(this, getAllItems());
-        recyclerView.setAdapter(mAdapter);
-        //-----------------------------------*/
+        mDatabase = dbHelper.getWritableDatabase();*/
     }
 
-    /*//Wilfredo-created method
-    private Cursor getAllItems() {
+  /*  private Cursor getAllItems() {
         return mDatabase.query(
                 DatabaseHelper.TABLE_NAME,
                 null,
@@ -69,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 null,
                 null,
                 DatabaseHelper.Date_COL3 + "DESC");
+        )
     }*/
 
 
