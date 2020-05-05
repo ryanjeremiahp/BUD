@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new FinanceFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_finances);
+                    new TransactionFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_addTransaction);
         }
     }
 
@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HelpFragment()).commit();
                 break;
+            case R.id.nav_addTransaction:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new TransactionFragment()).commit();
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
