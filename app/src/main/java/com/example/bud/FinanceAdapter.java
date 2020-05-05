@@ -45,9 +45,10 @@ public class FinanceAdapter extends RecyclerView.Adapter<FinanceAdapter.FinanceV
             return;
         }
         String name = mCursor.getString(mCursor.getColumnIndex(DatabaseHelper.Account_COL2));
-        int amount = mCursor.getInt(mCursor.getColumnIndex(DatabaseHelper.Total_COL4));
+        String amount = mCursor.getString(mCursor.getColumnIndex(DatabaseHelper.Total_COL4));
 
-        holder.nameText.set
+        financeViewHolder.nameText.setText(name);
+        financeViewHolder.countText.setText(amount);
     }
 
     @Override
