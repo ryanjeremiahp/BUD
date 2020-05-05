@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_statistics"
+        <item android:id="@+id/nav_finances"
             android:icon="@drawable/ic_statistics"
-            android:title="Statistics"/>
+            android:title="Finances"/>
         <item android:id="@+id/nav_help"
             android:icon="@drawable/ic_help_black_24dp"
             android:title="Help"/>
