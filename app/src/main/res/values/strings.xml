@@ -28,7 +28,17 @@
     </string-array>
 
     <string-array name="subcategoryChoices">
-        <item></item>
+        <item>-Please Choose-</item>
+        <item>Insurance</item>
+        <item>Rent</item>
+        <item>Loan Payment</item>
+        <item>Gas</item>
+        <item>Maintenance</item>
+        <item>Fast Food</item>
+        <item>Grocery</item>
+        <item>Lifestyle</item>
+        <item>Recreation/Entertainment</item>
+        <item>Miscellaneous</item>
     </string-array>
 
 </resources>

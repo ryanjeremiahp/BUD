@@ -3,6 +3,7 @@ package com.example.bud;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
@@ -30,8 +31,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
-        //create transaction table
         sqLiteDatabase.execSQL("create table " + TABLE_NAME + "(" +
                 LineItemID_COL1 + " integer primary key autoincrement not null," +
                 Account_COL2 + " text not null," +
@@ -52,7 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertData(String account, String date, String total, String category, String place, String notes, String subcategory) {
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        SQLiteDatabase database = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(Account_COL2, account);
@@ -63,7 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(Notes_COL7, notes);
         contentValues.put(Subcategory_COL8, subcategory);
 
-       long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
+       long result = database.insert(TABLE_NAME, null, contentValues);
 
         if (result == -1) {
             return false;
@@ -71,5 +70,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
 
+    }
+
+    public Cursor getAllTransactions() {
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor result = database.rawQuery("select * from " + TABLE_NAME, null);
+        return result;
     }
 }
