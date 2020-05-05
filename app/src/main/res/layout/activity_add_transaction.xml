@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="39dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:text="Transaction Details"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -29,86 +29,87 @@
         android:id="@+id/AccountLabel"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Account Name:"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/TransactionDetails"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TransactionDetails" />
 
     <Spinner
         android:id="@+id/AccountChooser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AccountLabel"
+        app:layout_constraintTop_toBottomOf="@+id/TransactionDetails" />
+
+    <TextView
+        android:id="@+id/Date"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:text=" Date: (MM/DD/YY)"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AccountLabel" />
 
-    <TextView
-        android:id="@+id/Date"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="24dp"
-        android:text="Date:"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/AccountChooser"
-        tools:layout_editor_absoluteX="16dp" />
-
     <EditText
         android:id="@+id/Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toEndOf="@+id/Date"
-        tools:layout_editor_absoluteY="175dp" />
+        app:layout_constraintTop_toBottomOf="@+id/AccountLabel" />
 
     <EditText
         android:id="@+id/Total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toEndOf="@+id/Total"
-        app:layout_constraintTop_toTopOf="@+id/Total" />
+        app:layout_constraintTop_toBottomOf="@+id/Date" />
 
     <TextView
         android:id="@+id/Total"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="Purchase Total:"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/Date"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Date" />
 
     <TextView
         android:id="@+id/Category"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:text="Purchase Category:"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/Total"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Total" />
 
     <Spinner
         android:id="@+id/CategoryChooser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Category" />
+        app:layout_constraintStart_toEndOf="@+id/Category"
+        app:layout_constraintTop_toBottomOf="@+id/Total" />
 
     <TextView
         android:id="@+id/Subcategory"
@@ -117,63 +118,72 @@
         android:layout_marginTop="16dp"
         android:text="Subcategory:"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/CategoryChooser"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Category" />
 
     <Spinner
         android:id="@+id/SubcategoryChooser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Subcategory" />
+        app:layout_constraintStart_toEndOf="@+id/Subcategory"
+        app:layout_constraintTop_toBottomOf="@+id/Category" />
 
     <TextView
         android:id="@+id/Place"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="Payed To:"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/SubcategoryChooser"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Subcategory" />
 
     <EditText
         android:id="@+id/PlaceEntered"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="213dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="text"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toEndOf="@+id/Place"
-        app:layout_constraintTop_toBottomOf="@+id/SubcategoryChooser" />
+        app:layout_constraintTop_toBottomOf="@+id/Subcategory" />
 
     <TextView
         android:id="@+id/Notes"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:text="Special Notes:"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/Place"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Place" />
 
     <EditText
-        android:id="@+id/SpecialNotesEnger"
+        android:id="@+id/SpecialNotesEntered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.67"
         app:layout_constraintStart_toEndOf="@+id/Notes"
-        tools:layout_editor_absoluteY="548dp" />
+        app:layout_constraintTop_toBottomOf="@+id/Place" />
+
+    <Button
+        android:id="@+id/AddTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Add Transaction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

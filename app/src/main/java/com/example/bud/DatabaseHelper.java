@@ -1,6 +1,7 @@
 
 package com.example.bud;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -10,7 +11,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "budget.db";
     public static final String TABLE_NAME = "Transactions";
+
     public static final String LineItemID_COL1 = "LineItemID";
+
     public static final String Account_COL2 = "Account";
     public static final String Date_COL3 = "Date";
     public static final String Total_COL4 = "Total";
@@ -23,7 +26,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
     }
 
     @Override
@@ -33,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table " + TABLE_NAME + "(" +
                 LineItemID_COL1 + " integer primary key autoincrement not null," +
                 Account_COL2 + " text not null," +
-                Date_COL3 + " blob not null," +
+                Date_COL3 + " text not null," +
                 Total_COL4 + " real not null," +
                 Category_COL5 + " text not null," +
                 Place_COL6 + " text not null," +
@@ -46,6 +48,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("drop table if exists " + TABLE_NAME);
         onCreate(sqLiteDatabase);
+
+    }
+
+    public boolean insertData(String account, String date, double total, String category, String place, String notes, String subcategory) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Account_COL2, account);
+        contentValues.put(Date_COL3, date);
+        contentValues.put(Total_COL4, total);
+        contentValues.put(Category_COL5, category);
+        contentValues.put(Place_COL6, place);
+        contentValues.put(Notes_COL7, notes);
+        contentValues.put(Subcategory_COL8, subcategory);
+
+       long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
+
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
 
     }
 }
