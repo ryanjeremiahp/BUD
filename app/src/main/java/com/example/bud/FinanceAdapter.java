@@ -22,12 +22,14 @@ public class FinanceAdapter extends RecyclerView.Adapter<FinanceAdapter.FinanceV
     public class FinanceViewHolder extends RecyclerView.ViewHolder{
         public TextView nameText;
         public TextView countText;
+        public TextView dateText;
 
         public FinanceViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nameText = itemView.findViewById(R.id.textview_name_item);
             countText = itemView.findViewById(R.id.textview_amount_item);
+            dateText = itemView.findViewById(R.id.textview_date_item);
         }
     }
 
@@ -46,9 +48,11 @@ public class FinanceAdapter extends RecyclerView.Adapter<FinanceAdapter.FinanceV
         }
         String name = mCursor.getString(mCursor.getColumnIndex(DatabaseHelper.Account_COL2));
         String amount = mCursor.getString(mCursor.getColumnIndex(DatabaseHelper.Total_COL4));
+        String date = mCursor.getString(mCursor.getColumnIndex(DatabaseHelper.Date_COL3));
 
         financeViewHolder.nameText.setText(name);
         financeViewHolder.countText.setText(amount);
+        financeViewHolder.dateText.setText(date);
     }
 
     @Override
