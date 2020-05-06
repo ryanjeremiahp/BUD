@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".AnalysisActivity">
 
+
+
     <TextView
         android:id="@+id/AnalysisTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="Analysis"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -23,154 +25,185 @@
         android:id="@+id/viewAllTransactions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="View All Transactions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AnalysisTitle" />
 
-    <Button
-        android:id="@+id/TotalSpendingMTDButton"
+
+    <TextView
+        android:id="@+id/yearLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="Total Spending MTD"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="8dp"
+        android:text="This Year"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewAllTransactions" />
 
     <Button
         android:id="@+id/totalSpendingYTDButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Total Spending"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearLabel" />
+
+    <Button
+        android:id="@+id/HousingYTD"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:text="Housing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalSpendingYTDButton" />
+
+    <Button
+        android:id="@+id/TransportationYTD"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Transportation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HousingYTD" />
+
+    <Button
+        android:id="@+id/FoodYTD"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Food"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TransportationYTD" />
+
+    <Button
+        android:id="@+id/UtilitiesYTD"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Utilities"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FoodYTD" />
+
+    <Button
+        android:id="@+id/MedicalYTD"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Medical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UtilitiesYTD" />
+
+    <Button
+        android:id="@+id/SavingsYTD"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Savings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MedicalYTD" />
+
+    <Button
+        android:id="@+id/personalYTD"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Personal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SavingsYTD" />
+
+
+
+    <TextView
+        android:id="@+id/MonthLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:text="Total Spending YTD"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        android:text="This Month"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewAllTransactions" />
 
     <Button
-        android:id="@+id/HousingPercentYTD"
-        android:layout_width="wrap_content"
+        android:id="@+id/TotalSpendingMTDButton"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Housing % YTD"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Total Spending"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalSpendingYTDButton" />
+        app:layout_constraintTop_toBottomOf="@+id/MonthLabel" />
 
     <Button
-        android:id="@+id/TransportationPercentYTD"
-        android:layout_width="wrap_content"
+        android:id="@+id/HousingMTD"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Transportation % YTD"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalSpendingYTDButton" />
-
-    <Button
-        android:id="@+id/FoodPercentYTD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Food % YTD"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="Housing"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HousingPercentYTD" />
+        app:layout_constraintTop_toBottomOf="@+id/TotalSpendingMTDButton" />
 
     <Button
-        android:id="@+id/UtilitiesPercentYTD"
-        android:layout_width="wrap_content"
+        android:id="@+id/transportationMTD"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Utilites % YTD"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TransportationPercentYTD" />
-
-    <Button
-        android:id="@+id/MedicalPercentYTD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Medical % YTD"
-        app:layout_constraintEnd_toStartOf="@+id/UtilitiesPercentYTD"
-        app:layout_constraintStart_toEndOf="@+id/FoodPercentYTD"
-        app:layout_constraintTop_toBottomOf="@+id/HousingPercentYTD" />
-
-    <Button
-        android:id="@+id/PersonalPercentYTD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Personal % YTD"
+        android:layout_marginStart="8dp"
+        android:text="Transportation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FoodPercentYTD" />
+        app:layout_constraintTop_toBottomOf="@+id/HousingMTD" />
 
     <Button
-        android:id="@+id/SavingsPercentYTD"
-        android:layout_width="wrap_content"
+        android:id="@+id/foodMTD"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Savings % YTD"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/PersonalPercentYTD" />
-
-    <Button
-        android:id="@+id/InsuranceTotalSpendingYTD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Insurance % YTD"
+        android:layout_marginStart="8dp"
+        android:text="Food"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PersonalPercentYTD" />
+        app:layout_constraintTop_toBottomOf="@+id/transportationMTD" />
 
     <Button
-        android:id="@+id/FastfoodPercentageOfFood"
-        android:layout_width="wrap_content"
+        android:id="@+id/utilitiesMTD"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Fast Food % of Food YTD"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PersonalPercentYTD" />
-
-    <TextView
-        android:id="@+id/ofTransportationLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="% of Transportation Spending YTD"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/LoanPaymentofTransportation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="8dp"
+        android:text="Utilites"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodMTD" />
 
     <Button
-        android:id="@+id/GasOfTransport"
-        android:layout_width="wrap_content"
+        android:id="@+id/medicalMTD"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:text="Gas"
-        app:layout_constraintBottom_toBottomOf="@+id/LoanPaymentofTransportation"
-        tools:layout_editor_absoluteX="9dp" />
+        android:layout_marginStart="8dp"
+        android:text="Medical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/utilitiesMTD" />
 
     <Button
-        android:id="@+id/LoanPaymentofTransportation"
-        android:layout_width="77dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
-        android:text="Loan"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button14"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/GasOfTransport" />
+        android:id="@+id/savingsMTD"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Savings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medicalMTD" />
 
     <Button
-        android:id="@+id/button14"
-        android:layout_width="wrap_content"
+        android:id="@+id/personalMTD"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:text="Insurance"
-        app:layout_constraintBottom_toBottomOf="@+id/LoanPaymentofTransportation"
-        tools:layout_editor_absoluteX="176dp" />
+        android:layout_marginStart="8dp"
+        android:text="Personal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/savingsMTD" />
 
-    <Button
-        android:id="@+id/button15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Maintenance"
-        app:layout_constraintBottom_toBottomOf="@+id/LoanPaymentofTransportation"
-        app:layout_constraintStart_toEndOf="@+id/button14" />
+
 </android.support.constraint.ConstraintLayout>

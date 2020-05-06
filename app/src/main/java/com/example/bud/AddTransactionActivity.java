@@ -71,7 +71,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                                 notesEntered.toString(),
                                 subcategoryChooser.toString());
                         if (isAdded) {
-                            Toast.makeText(AddTransactionActivity.this, "The transaction has been added", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddTransactionActivity.this, "Transaction has been added", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(AddTransactionActivity.this, "Transaction could not be added", Toast.LENGTH_LONG).show();
 
