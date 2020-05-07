@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AnalysisActivity"></activity>
+        <activity android:name=".AccountsActivity"></activity>
+        <activity android:name=".AnalyticSubcategoryActivity" />
+        <activity android:name=".AnalysisActivity" />
         <activity
             android:name=".AddTransactionActivity"
             android:windowSoftInputMode="adjustResize" />
