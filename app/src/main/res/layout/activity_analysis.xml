@@ -173,7 +173,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Utilites"
+        android:text="Utilities"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodMTD" />
 

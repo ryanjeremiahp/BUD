@@ -27,6 +27,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String Notes_COL7 = "Notes";
     public static final String Subcategory_COL8 = "Subcategory";
 
+    public static final int totalLocation = 3;
+    public static final int categoryLocation = 4;
+
+//todo way to grab strings from strings.xml R.array.account
+    public static final String checking = "Checking";
+    public static final String savings = "Savings";
+    public static final String credit = "Credit";
+
 
 
     public DatabaseHelper(@Nullable Context context) {
@@ -76,11 +84,99 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+
+
     public Cursor getAllTransactions() {
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor result = database.rawQuery("select * from " + TABLE_NAME, null);
         return result;
     }
+
+    public Cursor getCheckingTransactions() {
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor result = database.rawQuery("select * from " + TABLE_NAME
+                        + " where " + Account_COL2 + " = '" + checking + "'",
+                null);
+        return result;
+    }
+
+    public Cursor getSavingsTransactions() {
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor result = database.rawQuery("select * from " + TABLE_NAME
+                        + " where " + Account_COL2 + " = '" + savings + "'",
+                null);
+        return result;
+    }
+
+    public Cursor getCreditTransactions() {
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor result = database.rawQuery("select * from " + TABLE_NAME
+                        + " where " + Account_COL2 + " = '" + credit + "'",
+                null);
+        return result;
+    }
+
+
+
+    public String getCheckingBalance() {
+        Cursor transactionsFromAccount = this.getCheckingTransactions();
+
+        double tempTotal = 0;
+
+        while (transactionsFromAccount.moveToNext()) {
+            //should return Transaction.total
+            tempTotal += transactionsFromAccount.getDouble(totalLocation);
+        }
+
+        return String.valueOf(tempTotal);
+    }
+
+    public String getSavingsBalance() {
+        Cursor transactionsFromAccount = this.getSavingsTransactions();
+
+        double tempTotal = 0;
+
+        while (transactionsFromAccount.moveToNext()) {
+            //should return Transaction.total
+            tempTotal += transactionsFromAccount.getDouble(3);
+        }
+
+        return String.valueOf(tempTotal);
+    }
+
+    public String getCreditBalance() {
+        Cursor transactionsFromAccount = this.getCreditTransactions();
+
+        double tempTotal = 0;
+
+        while (transactionsFromAccount.moveToNext()) {
+            //should return Transaction.total
+            tempTotal += transactionsFromAccount.getDouble(3);
+        }
+
+        return String.valueOf(tempTotal);
+    }
+
+
+    public String getMonth () {
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH)+1;
+
+        String monthString = Integer.toString(month);
+        if (monthString.length() <2) {
+            monthString = '0' + monthString;
+        }
+
+        return monthString;
+    }
+
+    public String getYear () {
+        Calendar calendar = Calendar.getInstance();
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        return year;
+    }
+
+
 
     public Cursor getMTDList() {
         String likeDate = "'" + getMonth() + "/__/" + getYear() + "'";
@@ -102,21 +198,241 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public String getMonth () {
-        Calendar calendar = Calendar.getInstance();
-        int month = calendar.get(Calendar.MONTH)+1;
 
-        String monthString = Integer.toString(month);
-        if (monthString.length() <2) {
-            monthString = '0' + monthString;
+    public String getMTDTotal() {
+        Cursor list = this.getMTDList();
+
+        double positiveTotal = 0;
+        double negativeTotal = 0;
+
+        while (list.moveToNext()) {
+            if (list.getDouble(totalLocation) > 0) {
+                positiveTotal += list.getDouble(totalLocation);
+            } else {
+                negativeTotal += list.getDouble(totalLocation);
+            }
         }
 
-        return monthString;
+        return String.valueOf(positiveTotal) + " " + String.valueOf(negativeTotal);
     }
 
-    public String getYear () {
-        Calendar calendar = Calendar.getInstance();
-        String year = Integer.toString(calendar.get(Calendar.YEAR));
-        return year;
+    public String getYTDTotal() {
+        Cursor list = this.getYTDList();
+
+        double positiveTotal = 0;
+        double negativeTotal = 0;
+
+        while (list.moveToNext()) {
+            if (list.getDouble(totalLocation) > 0) {
+                positiveTotal += list.getDouble(totalLocation);
+            } else {
+                negativeTotal += list.getDouble(totalLocation);
+            }
+        }
+
+        return String.valueOf(positiveTotal) + " " + String.valueOf(negativeTotal);
+
+    }
+
+    public String getMTDHousing() {
+        Cursor list = this.getMTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Housing")) {
+                total += list.getDouble(totalLocation);
+            }
+
+        }
+
+        return String.valueOf(total);
+    }
+
+    public String getYTDHousing() {
+        Cursor list = this.getYTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Housing")) {
+                total += list.getDouble(totalLocation);
+            }
+
+        }
+
+        return String.valueOf(total);
+
+    }
+
+    public String getMTDTransport() {
+        Cursor list = this.getMTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Transportation")) {
+                total += list.getDouble(totalLocation);
+            }
+
+        }
+
+        return String.valueOf(total);
+    }
+
+    public String getYTDTransport() {
+        Cursor list = this.getYTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Transportation")) {
+                total += list.getDouble(totalLocation);
+            }
+
+        }
+        return String.valueOf(total);
+    }
+
+    public String getMTDFood() {
+        Cursor list = this.getMTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Food")) {
+                total += list.getDouble(totalLocation);
+            }
+        }
+        return String.valueOf(total);
+    }
+
+    public String getYTDFood() {
+        Cursor list = this.getYTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Food")) {
+                total += list.getDouble(totalLocation);
+            }
+        }
+        return String.valueOf(total);
+    }
+
+    public String getMTDUtilities() {
+        Cursor list = this.getMTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Utilities")) {
+                total += list.getDouble(totalLocation);
+            }
+        }
+        return String.valueOf(total);
+    }
+
+    public String getYTDUtilities() {
+        Cursor list = this.getYTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Utilities")) {
+                total += list.getDouble(totalLocation);
+            }
+        }
+        return String.valueOf(total);
+    }
+
+    public String getMTDMedical() {
+        Cursor list = this.getMTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Medical")) {
+                total += list.getDouble(totalLocation);
+            }
+
+        }
+
+        return String.valueOf(total);
+    }
+
+    public String getYTDMedical() {
+        Cursor list = this.getYTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Medical")) {
+                total += list.getDouble(totalLocation);
+            }
+
+        }
+
+        return String.valueOf(total);
+    }
+
+    public String getMTDSavings() {
+        Cursor list = this.getMTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Savings")) {
+                total += list.getDouble(totalLocation);
+            }
+
+        }
+
+        return String.valueOf(total);
+    }
+
+    public String getYTDSavings() {
+        Cursor list = this.getYTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Savings")) {
+                total += list.getDouble(totalLocation);
+            }
+
+        }
+
+        return String.valueOf(total);
+    }
+
+    public String getMTDPersonal() {
+        Cursor list = this.getMTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Personal")) {
+                total += list.getDouble(totalLocation);
+            }
+
+        }
+
+        return String.valueOf(total);
+    }
+
+    public String getYTDPersonal() {
+        Cursor list = this.getYTDList();
+
+        double total = 0;
+
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals("Personal")) {
+                total += list.getDouble(totalLocation);
+            }
+
+        }
+
+        return String.valueOf(total);
     }
 }
