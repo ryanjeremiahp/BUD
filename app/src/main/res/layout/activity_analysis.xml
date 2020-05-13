@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/yearLabel" />
 
     <Button
-        android:id="@+id/HousingYTD"
+        android:id="@+id/housingYTD"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -64,49 +64,49 @@
         app:layout_constraintTop_toBottomOf="@+id/totalSpendingYTDButton" />
 
     <Button
-        android:id="@+id/TransportationYTD"
+        android:id="@+id/transportationYTD"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="Transportation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HousingYTD" />
+        app:layout_constraintTop_toBottomOf="@+id/housingYTD" />
 
     <Button
-        android:id="@+id/FoodYTD"
+        android:id="@+id/foodYTD"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="Food"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TransportationYTD" />
+        app:layout_constraintTop_toBottomOf="@+id/transportationYTD" />
 
     <Button
-        android:id="@+id/UtilitiesYTD"
+        android:id="@+id/utilitiesYTD"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="Utilities"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FoodYTD" />
+        app:layout_constraintTop_toBottomOf="@+id/foodYTD" />
 
     <Button
-        android:id="@+id/MedicalYTD"
+        android:id="@+id/medicalYTD"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="Medical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UtilitiesYTD" />
+        app:layout_constraintTop_toBottomOf="@+id/utilitiesYTD" />
 
     <Button
-        android:id="@+id/SavingsYTD"
+        android:id="@+id/savingsYTD"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="Savings"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MedicalYTD" />
+        app:layout_constraintTop_toBottomOf="@+id/medicalYTD" />
 
     <Button
         android:id="@+id/personalYTD"
@@ -115,7 +115,7 @@
         android:layout_marginEnd="8dp"
         android:text="Personal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SavingsYTD" />
+        app:layout_constraintTop_toBottomOf="@+id/savingsYTD" />
 
 
 
@@ -131,7 +131,7 @@
         app:layout_constraintTop_toBottomOf="@+id/viewAllTransactions" />
 
     <Button
-        android:id="@+id/TotalSpendingMTDButton"
+        android:id="@+id/totalSpendingMTDButton"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -141,14 +141,14 @@
         app:layout_constraintTop_toBottomOf="@+id/MonthLabel" />
 
     <Button
-        android:id="@+id/HousingMTD"
+        android:id="@+id/housingMTD"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:text="Housing"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TotalSpendingMTDButton" />
+        app:layout_constraintTop_toBottomOf="@+id/totalSpendingMTDButton" />
 
     <Button
         android:id="@+id/transportationMTD"
@@ -157,7 +157,7 @@
         android:layout_marginStart="8dp"
         android:text="Transportation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HousingMTD" />
+        app:layout_constraintTop_toBottomOf="@+id/housingMTD" />
 
     <Button
         android:id="@+id/foodMTD"

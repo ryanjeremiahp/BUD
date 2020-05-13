@@ -89,16 +89,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public Cursor getTransactions(String account) {
+    public Cursor getTransactionsAccount(String account) {
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor result = database.rawQuery("select * from " + TABLE_NAME
+
                         + " where " + Account_COL2 + " = '" + account + "'",
                 null);
         return result;
     }
 
     public String getBalance(String account, int categoryLocation) {
-        Cursor transactionsFromAccount = this.getTransactions(account);
+        Cursor transactionsFromAccount = this.getTransactionsAccount(account);
 
         double tempTotal = 0;
         while (transactionsFromAccount.moveToNext()) {
