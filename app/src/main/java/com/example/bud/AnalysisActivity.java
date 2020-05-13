@@ -30,10 +30,6 @@ public class AnalysisActivity extends AppCompatActivity {
     Button yearSavingsButton;
     Button yearPersonalButton;
 
-    String savings = "Savings";
-    String checking = "Checking";
-    String credit = "Credit";
-
     double monthTotalSpent;
     double yearTotalSpent;
 
@@ -46,7 +42,6 @@ public class AnalysisActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis);
-
 
         initializer();
 

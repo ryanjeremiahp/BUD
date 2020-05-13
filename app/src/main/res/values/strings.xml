@@ -31,13 +31,13 @@
         <item>-Please Choose-</item>
         <item>Insurance</item>
         <item>Rent</item>
-        <item>Loan Payment</item>
+        <item>Loan</item>
         <item>Gas</item>
         <item>Maintenance</item>
-        <item>Fast Food</item>
+        <item>Eating Out</item>
         <item>Grocery</item>
         <item>Lifestyle</item>
-        <item>Recreation/Entertainment</item>
+        <item>Entertainment</item>
         <item>Miscellaneous</item>
     </string-array>
 

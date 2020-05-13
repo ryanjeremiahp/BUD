@@ -181,4 +181,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return String.valueOf(total);
     }
+
+    public String getTimeCategorySubcategory(Cursor list, String category, String subcategory) {
+        double total = 0;
+        while (list.moveToNext()) {
+            if (list.getString(categoryLocation).equals(category)) {
+                if (list.getString(subcategoryLocation).equals(subcategory)) {
+                    total += list.getDouble(totalLocation);
+                }
+            }
+        }
+        return String.valueOf(total);
+    }
 }
