@@ -11,13 +11,14 @@
 
 
     <string-array name="accountChoices">
+        <item> - Please Choose - </item>
         <item>Checking</item>
         <item>Savings</item>
         <item>Credit</item>
     </string-array>
 
     <string-array name="categoryChoices">
-        <item>-Please Choose-</item>
+        <item> - Please Choose - </item>
         <item>Housing</item>
         <item>Transportation</item>
         <item>Food</item>
@@ -28,7 +29,7 @@
     </string-array>
 
     <string-array name="subcategoryChoices">
-        <item>-Please Choose-</item>
+        <item> - Please Choose - </item>
         <item>Insurance</item>
         <item>Rent</item>
         <item>Loan</item>
@@ -40,5 +41,19 @@
         <item>Entertainment</item>
         <item>Miscellaneous</item>
     </string-array>
+
+    <string name="addTransactionButton">Add Transaction</string>
+    <string name="TransactionDetailsLabel">Transaction Details</string>
+    <string name="AccountNameLabel">Account Name</string>
+    <string name="DateLabel">Date (MM/DD/YYYY)</string>
+    <string name="PurchaseTotalLabel">Purchase Total</string>
+    <string name="PurchaseCategoryLabel">Purchase Category</string>
+    <string name="EnterDateHint">Enter Purchase Date</string>
+    <string name="SubcategoryLabel">Purchase Subcategory</string>
+    <string name="PayedToLabel">Payed To</string>
+    <string name="NotesLabel">Notes</string>
+    <string name="EnterTotalHint">Enter Purchase Total</string>
+    <string name="PayedToHint">Enter Purchase Location</string>
+    <string name="NotesHint">Any Extra Pertinent Information</string>
 
 </resources>

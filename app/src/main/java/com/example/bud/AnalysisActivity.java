@@ -11,30 +11,13 @@ public class AnalysisActivity extends AppCompatActivity {
     DatabaseHelper database;
 
     Button viewAllTransactionsButton;
+    Button monthTotalSpendingButton, monthHousingButton, monthTransportationButton, monthFoodButton,
+    monthUtilitiesButton, monthMedicalButton, monthSavingsButton, monthPersonalButton;
+    Button yearTotalSpendingButton, yearHousingButton, yearTransportationButton, yearFoodButton,
+     yearUtilitiesButton, yearMedicalButton, yearSavingsButton, yearPersonalButton;
 
-    Button monthTotalSpendingButton;
-    Button monthHousingButton;
-    Button monthTransportationButton;
-    Button monthFoodButton;
-    Button monthUtilitiesButton;
-    Button monthMedicalButton;
-    Button monthSavingsButton;
-    Button monthPersonalButton;
-
-    Button yearTotalSpendingButton;
-    Button yearHousingButton;
-    Button yearTransportationButton;
-    Button yearFoodButton;
-    Button yearUtilitiesButton;
-    Button yearMedicalButton;
-    Button yearSavingsButton;
-    Button yearPersonalButton;
-
-    double monthTotalSpent;
-    double yearTotalSpent;
-
-    Cursor monthList;
-    Cursor yearList;
+    double monthTotalSpent, yearTotalSpent;
+    Cursor monthList, yearList;
 
 
 
@@ -43,7 +26,12 @@ public class AnalysisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis);
 
+        GlobalClass globalClass = (GlobalClass) getApplicationContext();
+        database = globalClass.getDatabase();
+
         initializer();
+
+
 
         ViewMonthTotalSpending();
         ViewMonthHousing();

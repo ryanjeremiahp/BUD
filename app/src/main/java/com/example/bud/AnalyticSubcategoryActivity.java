@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class AnalyticSubcategoryActivity extends AppCompatActivity {
-
+    GlobalClass globalClass;
     DatabaseHelper database;
 
     Button insurance;
@@ -34,6 +34,9 @@ public class AnalyticSubcategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analytic_subcategory);
+
+        globalClass = (GlobalClass) getApplicationContext();
+        database = globalClass.getDatabase();
 
         initializer();
     }

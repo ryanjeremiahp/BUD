@@ -1,5 +1,6 @@
 package com.example.bud;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,24 +10,27 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-
 public class AddTransactionActivity extends AppCompatActivity {
 
     DatabaseHelper database;
+    GlobalClass globalClass;
 
-    private EditText dateEntered, totalEntered, placeEntered, notesEntered;
+    /*private EditText dateEntered, totalEntered, placeEntered, notesEntered;
     private Spinner accountChooser, categoryChooser, subcategoryChooser;
-    private Button addTransaction;
+    private Button addTransaction;*/
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
-        //todo - Make this use the same data as the Main ---- just comment out?
-        //database = new DatabaseHelper(this);
 
-        dateEntered = findViewById(R.id.DateEntered);
+        globalClass = (GlobalClass) getApplicationContext();
+        database = globalClass.getDatabase();
+
+        //database = MainActivity.
+
+        /*dateEntered = findViewById(R.id.DateEntered);
         totalEntered = findViewById(R.id.TotalEntered);
         placeEntered = findViewById(R.id.PlaceEntered);
         notesEntered = findViewById(R.id.NotesEntered);
@@ -52,13 +56,27 @@ public class AddTransactionActivity extends AppCompatActivity {
         subcategoryChooser.setAdapter(subcategoryAdapter);
 
 
-        addTransaction = findViewById(R.id.AddTransaction);
-
-
-        AddTransaction();
+        addTransaction = findViewById(R.id.AddTransaction);*/
     }
 
-    public void AddTransaction() {
+    public void addTransaction (View view) {
+        boolean isAdded = database.insertData(findViewById(R.id.AccountChooser).toString(),
+                findViewById(R.id.DateEntered).toString(),
+                findViewById(R.id.TotalEntered).toString(),
+                findViewById(R.id.CategoryChooser).toString(),
+                findViewById(R.id.PlaceEntered).toString(),
+                findViewById(R.id.NotesEntered).toString(),
+                findViewById(R.id.SubcategoryChooser).toString());
+        if (isAdded) {
+            Toast.makeText(AddTransactionActivity.this, "Transaction has been added", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(AddTransactionActivity.this, "Transaction could not be added", Toast.LENGTH_LONG).show();
+
+        }
+       globalClass.setDatabase(database);
+    }
+
+   /* public void AddTransaction() {
         addTransaction.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -79,5 +97,5 @@ public class AddTransactionActivity extends AppCompatActivity {
                     }
                 }
         );
-    }
+    }*/
 }

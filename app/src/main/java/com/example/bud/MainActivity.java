@@ -1,5 +1,6 @@
 package com.example.bud;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
@@ -13,20 +14,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    GlobalClass globalClass;
     private DrawerLayout drawer;
     //Wilfredo made these two lines'
     /*private SQLiteDatabase mDatabase;
     private FinanceAdapter mAdapter;*/
 
-    DatabaseHelper database;
-
-
+    public DatabaseHelper database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        database = new DatabaseHelper(this);
+
+        globalClass= (GlobalClass) getApplicationContext();
+        globalClass.setDatabase(new DatabaseHelper(this));
+        database = globalClass.getDatabase();
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -93,4 +96,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
+
+
+    public DatabaseHelper getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(DatabaseHelper database) {
+        this.database = database;
+    }
+
 }
