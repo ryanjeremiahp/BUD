@@ -6,32 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".AccountsActivity">
 
-    <Button
-        android:id="@+id/ViewAllSavingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="View All Transactions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SavingsBalance" />
-
-    <Button
-        android:id="@+id/viewAllCreditButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="View All Transactions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creditBalance" />
-
     <TextView
         android:id="@+id/CheckingLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Checking Balance:"
+        android:text="@string/CheckingBalanceLabel"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,29 +22,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Savings Balance:"
+        android:text="@string/SavingsBalanceLabel"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ViewAllCheckingButton" />
+        app:layout_constraintTop_toBottomOf="@+id/viewAllCheckingButton" />
 
     <TextView
         android:id="@+id/CreditLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Credit Balance:"
+        android:text="@string/CreditBalanceLabel"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ViewAllSavingsButton" />
-
-    <TextView
-        android:id="@+id/CheckingBalanceLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="175dp"
-        tools:layout_editor_absoluteY="98dp" />
+        app:layout_constraintTop_toBottomOf="@+id/viewAllSavingsButton" />
 
     <TextView
         android:id="@+id/CheckingBalance"
@@ -104,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Accounts"
+        android:text="@string/AccountsLabel"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#494848"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,13 +85,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/ViewAllCheckingButton"
+        android:id="@+id/viewAllCheckingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="View All Transactions"
+        android:onClick="getCheckingTransactions"
+        android:text="@string/ViewAllTransactionsLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CheckingBalance" />
+
+    <Button
+        android:id="@+id/viewAllSavingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="getSavingsTransactions"
+        android:text="@string/ViewAllTransactionsLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SavingsBalance" />
+
+    <Button
+        android:id="@+id/viewAllCreditButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="getCreditTransactions"
+        android:text="@string/ViewAllTransactionsLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/creditBalance" />
 </android.support.constraint.ConstraintLayout>

@@ -30,26 +30,6 @@ public class AnalysisActivity extends AppCompatActivity {
         database = globalClass.getDatabase();
 
         initializer();
-
-
-
-        ViewMonthTotalSpending();
-        ViewMonthHousing();
-        ViewMonthTransportation();
-        ViewMonthFood();
-        ViewMonthUtilities();
-        ViewMonthMedical();
-        ViewMonthSavings();
-        ViewMonthPersonal();
-
-        ViewYearTotalSpending();
-        ViewYearHousing();
-        ViewYearTransportation();
-        ViewYearFood();
-        ViewYearUtilities();
-        ViewYearMedical();
-        ViewYearSavings();
-        ViewYearPersonal();
     }
 
     public void initializer() {
@@ -83,382 +63,190 @@ public class AnalysisActivity extends AppCompatActivity {
         yearTotalSpent = Double.parseDouble(temp2[0]);
     }
 
-    public void ViewAllTransactions() {
-        viewAllTransactionsButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Cursor result = database.getAllTransactions();
-                        if (result.getCount() == 0) {
-                            showMessage("Error", "No Transactions Found");
-                            return;
-                        }
+    public void ViewAllTransactions(View view) {
+        Cursor result = database.getAllTransactions();
+        if (result.getCount() == 0) {
+            showMessage("Error", "No Transactions Found");
+            return;
+        }
 
-                        StringBuffer stringBuffer = new StringBuffer();
-                        while (result.moveToNext()) {
-                            stringBuffer.append("LineItem: " + result.getString(0) + "\n");
-                            stringBuffer.append("Account: " + result.getString(1) + "\n");
-                            stringBuffer.append("Total: " + result.getString(2) + "\n");
-                            stringBuffer.append("Category: " + result.getString(3) + "\n");
-                            stringBuffer.append("Place: " + result.getString(4) + "\n");
-                            stringBuffer.append("Notes: " + result.getString(5) + "\n");
-                            stringBuffer.append("Subcategory: " + result.getString(6) + "\n\n");
-                        }
+        StringBuffer stringBuffer = new StringBuffer();
 
-                        showMessage("TransactionList", stringBuffer.toString());
-                    }
-                }
-        );
+        while (result.moveToNext()) {
+            stringBuffer.append("LineItem: " + result.getString(0) + "\n");
+            stringBuffer.append("Account: " + result.getString(1) + "\n");
+            stringBuffer.append("Total: " + result.getString(2) + "\n");
+            stringBuffer.append("Category: " + result.getString(3) + "\n");
+            stringBuffer.append("Place: " + result.getString(4) + "\n");
+            stringBuffer.append("Notes: " + result.getString(5) + "\n");
+            stringBuffer.append("Subcategory: " + result.getString(6) + "\n\n");
+        }
+
+        showMessage("Transaction List", stringBuffer.toString());
     }
 
 
-    public void ViewMonthTotalSpending() {
-        monthTotalSpendingButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (monthList.getCount() == 0) {
-                            showMessage("Error", "No Transactions Found");
-                            return;
-                        }
-                        String[] temp = database.getTimeTotal(monthList).split(" ", 2);
-
-                        String message = "Money is: $" + temp[1] + "\n" +
-                                "Money out: $" + temp[0];
-                        showMessage("This Month's Total Spending\n", message);
-                    }
-                }
-        );
-    }
-
-    public void ViewMonthHousing() {
-        monthHousingButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (monthList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Housing";
-                        String total = database.getTimeCategory(monthList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / monthTotalSpent;
-
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
-                        showMessage(categoryName + " Month's Spending", message);
-
-                    }
-                }
-        );
-    }
-    public void ViewMonthTransportation() {
-        monthTransportationButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (monthList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Transportation";
-                        String total = database.getTimeCategory(monthList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / monthTotalSpent;
-
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
-                        showMessage(categoryName + " Month's Spending", message);
-                    }
-                }
-        );
-
-    }
-    public void ViewMonthFood() {
-        monthFoodButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (monthList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Food";
-                        String total = database.getTimeCategory(monthList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / monthTotalSpent;
-
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
-                        showMessage(categoryName + " Month's Spending", message);
-
-                    }
-                }
-        );
-    }
-    public void ViewMonthUtilities() {
-        monthUtilitiesButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (monthList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Utilities";
-                        String total = database.getTimeCategory(monthList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / monthTotalSpent;
-
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
-                        showMessage(categoryName + " Month's Spending", message);
-
-                    }
-                }
-        );
-    }
-    public void ViewMonthMedical() {
-        monthMedicalButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (monthList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Medical";
-                        String total = database.getTimeCategory(monthList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / monthTotalSpent;
-
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
-                        showMessage(categoryName + " Month's Spending", message);
-
-                    }
-                }
-        );
-    }
-    public void ViewMonthSavings() {
-        monthSavingsButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (monthList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Savings";
-                        String total = database.getTimeCategory(monthList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / monthTotalSpent;
-
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
-                        showMessage(categoryName + " Month's Spending", message);
-
-                    }
-                }
-        );
-    }
-    public void ViewMonthPersonal() {
-        monthPersonalButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (monthList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Personal";
-                        String total = database.getTimeCategory(monthList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / monthTotalSpent;
-
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
-                        showMessage(categoryName + " Month's Spending", message);
-
-                    }
-                }
-        );
+    public void ViewMonthTotalSpending(View view) {
+        String[] temp = database.getTimeTotal(monthList).split(" ", 2);
+        String message = "Money in: $" + temp[1] + "\n" +
+                "Money out: $" + temp[0];
+        showMessage("This Month's Total Spending\n", message);
     }
 
 
-    public void ViewYearTotalSpending() {
-        yearTotalSpendingButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (yearList.getCount() == 0) {
-                            showMessage("Error", "No Transactions Found");
-                            return;
-                        }
-                        String[] temp = database.getTimeTotal(yearList).split(" ", 2);
+    public void ViewMonthHousing(View view) {
+        String categoryName = "Housing";
+        String total = database.getTimeCategory(monthList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / monthTotalSpent;
 
-                        String message = "Money is: $" + temp[1] + "\n" +
-                                "Money out: $" + temp[0];
-                        showMessage("This Year's Total Spending\n", message);
-                    }
-                }
-        );
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
+        showMessage(categoryName + " Month's Spending", message);
+    }
+    public void ViewMonthTransportation(View view) {
+        String categoryName = "Transportation";
+        String total = database.getTimeCategory(monthList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / monthTotalSpent;
+
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
+        showMessage(categoryName + " Month's Spending", message);
+    }
+    public void ViewMonthFood(View view) {
+        String categoryName = "Food";
+        String total = database.getTimeCategory(monthList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / monthTotalSpent;
+
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
+        showMessage(categoryName + " Month's Spending", message);
+    }
+    public void ViewMonthUtilities(View view) {
+        String categoryName = "Utilities";
+        String total = database.getTimeCategory(monthList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / monthTotalSpent;
+
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
+        showMessage(categoryName + " Month's Spending", message);
+    }
+    public void ViewMonthMedical(View view) {
+        String categoryName = "Medical";
+        String total = database.getTimeCategory(monthList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / monthTotalSpent;
+
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
+        showMessage(categoryName + " Month's Spending", message);
+    }
+    public void ViewMonthSavings(View view) {
+        String categoryName = "Savings";
+        String total = database.getTimeCategory(monthList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / monthTotalSpent;
+
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
+        showMessage(categoryName + " Month's Spending", message);
+    }
+    public void ViewMonthPersonal(View view) {
+        String categoryName = "Personal";
+        String total = database.getTimeCategory(monthList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / monthTotalSpent;
+
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this months total spending";
+        showMessage(categoryName + " Month's Spending", message);
     }
 
-    public void ViewYearHousing() {
-        yearHousingButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (yearList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Housing";
-                        String total = database.getTimeCategory(yearList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / yearTotalSpent;
 
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
-                        showMessage(categoryName + " Year's Spending", message);
+    public void ViewYearTotalSpending(View view) {
+        if (yearList.getCount() == 0) {
+            showMessage("Error", "No Transactions Found");
+            return;
+        }
+        String[] temp = database.getTimeTotal(yearList).split(" ", 2);
 
-                    }
-                }
-        );
+        String message = "Money is: $" + temp[1] + "\n" +
+                "Money out: $" + temp[0];
+        showMessage("This Year's Total Spending\n", message);
     }
-    public void ViewYearTransportation() {
-        yearTransportationButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (yearList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Transportation";
-                        String total = database.getTimeCategory(yearList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / yearTotalSpent;
 
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
-                        showMessage(categoryName + " Year's Spending", message);
+    public void ViewYearHousing(View view) {
+        String categoryName = "Housing";
+        String total = database.getTimeCategory(yearList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / yearTotalSpent;
 
-                    }
-                }
-        );
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
+        showMessage(categoryName + " Year's Spending", message);
     }
-    public void ViewYearFood() {
-        yearFoodButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (yearList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Food";
-                        String total = database.getTimeCategory(yearList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / yearTotalSpent;
+    public void ViewYearTransportation(View view) {
+        String categoryName = "Transportation";
+        String total = database.getTimeCategory(yearList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / yearTotalSpent;
 
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
-                        showMessage(categoryName + " Year's Spending", message);
-
-                    }
-                }
-        );
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
+        showMessage(categoryName + " Year's Spending", message);
     }
-    public void ViewYearUtilities() {
-        yearUtilitiesButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (yearList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Utilities";
-                        String total = database.getTimeCategory(yearList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / yearTotalSpent;
+    public void ViewYearFood(View view) {
+        String categoryName = "Food";
+        String total = database.getTimeCategory(yearList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / yearTotalSpent;
 
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
-                        showMessage(categoryName + " Year's Spending", message);
-
-                    }
-                }
-        );
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
+        showMessage(categoryName + " Year's Spending", message);
     }
-    public void ViewYearMedical() {
-        yearMedicalButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (yearList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Medical";
-                        String total = database.getTimeCategory(yearList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / yearTotalSpent;
+    public void ViewYearUtilities(View view) {
+        String categoryName = "Utilities";
+        String total = database.getTimeCategory(yearList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / yearTotalSpent;
 
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
-                        showMessage(categoryName + " Year's Spending", message);
-
-                    }
-                }
-        );
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
+        showMessage(categoryName + " Year's Spending", message);
     }
-    public void ViewYearSavings() {
-        yearSavingsButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (yearList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Savings";
-                        String total = database.getTimeCategory(yearList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / yearTotalSpent;
+    public void ViewYearMedical(View view) {
+        String categoryName = "Medical";
+        String total = database.getTimeCategory(yearList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / yearTotalSpent;
 
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
-                        showMessage(categoryName + " Year's Spending", message);
-
-                    }
-                }
-        );
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
+        showMessage(categoryName + " Year's Spending", message);
     }
-    public void ViewYearPersonal() {
-        yearPersonalButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (yearList.getCount() == 0) {
-                            showMessage("Welp", "There was no spending in this category this month");
-                            return;
-                        }
-                        String categoryName = "Personal";
-                        String total = database.getTimeCategory(yearList, categoryName);
-                        double totalDouble = Double.parseDouble(total);
-                        double percentOfSpending = totalDouble / yearTotalSpent;
+    public void ViewYearSavings(View view) {
+        String categoryName = "Savings";
+        String total = database.getTimeCategory(yearList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / yearTotalSpent;
 
-                        String message = "$" + total +
-                                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
-                        showMessage(categoryName + " Year's Spending", message);
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
+        showMessage(categoryName + " Year's Spending", message);
+    }
+    public void ViewYearPersonal(View view) {
+        String categoryName = "Personal";
+        String total = database.getTimeCategory(yearList, categoryName);
+        double totalDouble = Double.parseDouble(total);
+        double percentOfSpending = totalDouble / yearTotalSpent;
 
-                    }
-                }
-        );
+        String message = "$" + total +
+                "\n"+String.format("%.2f", percentOfSpending)+"% of this year's total spending";
+        showMessage(categoryName + " Year's Spending", message);
     }
 
     public void showMessage(String title, String message) {

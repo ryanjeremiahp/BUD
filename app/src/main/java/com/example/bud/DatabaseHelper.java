@@ -193,4 +193,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return String.valueOf(total);
     }
+
+
+    public static int getTotalLocation() {
+        return totalLocation;
+    }
+
+    public static int getCategoryLocation() {
+        return categoryLocation;
+    }
+
+    public static int getSubcategoryLocation() {
+        return subcategoryLocation;
+    }
+
+    public static String getChecking() {
+        return checking;
+    }
+
+    public static String getSavings() {
+        return savings;
+    }
+
+    public static String getCredit() {
+        return credit;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.bud;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,9 +16,9 @@ public class AddTransactionActivity extends AppCompatActivity {
     DatabaseHelper database;
     GlobalClass globalClass;
 
-    /*private EditText dateEntered, totalEntered, placeEntered, notesEntered;
+    private EditText dateEntered, totalEntered, placeEntered, notesEntered;
     private Spinner accountChooser, categoryChooser, subcategoryChooser;
-    private Button addTransaction;*/
+    private Button addTransaction;
 
     @Override
 
@@ -28,45 +29,45 @@ public class AddTransactionActivity extends AppCompatActivity {
         globalClass = (GlobalClass) getApplicationContext();
         database = globalClass.getDatabase();
 
-        //database = MainActivity.
 
-        /*dateEntered = findViewById(R.id.DateEntered);
+        dateEntered = findViewById(R.id.DateEntered);
         totalEntered = findViewById(R.id.TotalEntered);
         placeEntered = findViewById(R.id.PlaceEntered);
         notesEntered = findViewById(R.id.NotesEntered);
 
         accountChooser = findViewById(R.id.AccountChooser);
-        ArrayAdapter<CharSequence> accountAdapter =
-                ArrayAdapter.createFromResource(this, R.array.accountChoices,android.R.layout.simple_spinner_item);
+        /*ArrayAdapter<CharSequence> accountAdapter =
+                ArrayAdapter.createFromResource(this, R.array.accountChoices, android.R.layout.simple_spinner_item);
         accountAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        accountChooser.setAdapter(accountAdapter);
+        accountChooser.setAdapter(accountAdapter);*/
 
 
         categoryChooser = findViewById(R.id.CategoryChooser);
-        ArrayAdapter<CharSequence> categoryAdapter =
+      /*  ArrayAdapter<CharSequence> categoryAdapter =
                 ArrayAdapter.createFromResource(this, R.array.categoryChoices, android.R.layout.simple_spinner_item);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categoryChooser.setAdapter(categoryAdapter);
+        categoryChooser.setAdapter(categoryAdapter);*/
 
 
         subcategoryChooser = findViewById(R.id.SubcategoryChooser);
-        ArrayAdapter<CharSequence> subcategoryAdapter =
+        /*ArrayAdapter<CharSequence> subcategoryAdapter =
                 ArrayAdapter.createFromResource(this, R.array.subcategoryChoices, android.R.layout.simple_spinner_item);
         subcategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        subcategoryChooser.setAdapter(subcategoryAdapter);
+        subcategoryChooser.setAdapter(subcategoryAdapter);*/
 
 
-        addTransaction = findViewById(R.id.AddTransaction);*/
+        addTransaction = findViewById(R.id.AddTransaction);
     }
 
     public void addTransaction (View view) {
-        boolean isAdded = database.insertData(findViewById(R.id.AccountChooser).toString(),
-                findViewById(R.id.DateEntered).toString(),
-                findViewById(R.id.TotalEntered).toString(),
-                findViewById(R.id.CategoryChooser).toString(),
-                findViewById(R.id.PlaceEntered).toString(),
-                findViewById(R.id.NotesEntered).toString(),
-                findViewById(R.id.SubcategoryChooser).toString());
+        boolean isAdded = database.insertData(
+                accountChooser.toString(),
+                dateEntered.getText().toString(),
+                totalEntered.getText().toString(),
+                categoryChooser.toString(),
+                placeEntered.getText().toString(),
+                notesEntered.getText().toString(),
+                subcategoryChooser.toString());
         if (isAdded) {
             Toast.makeText(AddTransactionActivity.this, "Transaction has been added", Toast.LENGTH_LONG).show();
         } else {
@@ -74,28 +75,14 @@ public class AddTransactionActivity extends AppCompatActivity {
 
         }
        globalClass.setDatabase(database);
+
+/*
+        Intent intent = new Intent(this, MainActivity.class);
+        EditText editTextDate = findViewById(R.id.DateEntered);
+        String tempDate = dateEntered.getText().toString();
+        intent.putExtra("extraAddTrans", tempDate);
+        intent.putExtra("extraAddTrans", "blah");
+        startActivity(intent)*/;
+
     }
-
-   /* public void AddTransaction() {
-        addTransaction.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        boolean isAdded = database.insertData(accountChooser.toString(),
-                                dateEntered.toString(),
-                                totalEntered.toString(),
-                                categoryChooser.toString(),
-                                placeEntered.toString(),
-                                notesEntered.toString(),
-                                subcategoryChooser.toString());
-                        if (isAdded) {
-                            Toast.makeText(AddTransactionActivity.this, "Transaction has been added", Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(AddTransactionActivity.this, "Transaction could not be added", Toast.LENGTH_LONG).show();
-
-                        }
-                    }
-                }
-        );
-    }*/
 }

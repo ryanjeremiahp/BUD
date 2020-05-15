@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="Transportation Spending Breakdown\nfor This Year"
+        android:text="@string/TransportationSpendingBreakdownLabel"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/GasPercentButton"
@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="24dp"
-        android:text="Gas"
+        android:onClick="ViewGasOfTransportation"
+        android:text="@string/GasLabel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -32,7 +33,8 @@
         android:id="@+id/LoanPercentButton"
         android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:text="Loan"
+        android:onClick="ViewLoanOfTransportation"
+        android:text="@string/LoanLabel"
         app:layout_constraintBottom_toBottomOf="@+id/GasPercentButton"
         app:layout_constraintEnd_toStartOf="@+id/InsuranceCarButton"
         app:layout_constraintStart_toEndOf="@+id/GasPercentButton" />
@@ -41,7 +43,8 @@
         android:id="@+id/InsuranceCarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Insurance"
+        android:onClick="ViewInsuranceOfTransportation"
+        android:text="@string/InsuranceLabel"
         app:layout_constraintBottom_toBottomOf="@+id/GasPercentButton"
         app:layout_constraintEnd_toStartOf="@+id/MaintenancePercentButton"
         app:layout_constraintHorizontal_bias="0.896"
@@ -52,7 +55,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="Maintenance"
+        android:onClick="ViewMaintenanceOfTransportation"
+        android:text="@string/MaintenanceLabel"
         app:layout_constraintBottom_toBottomOf="@+id/GasPercentButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -61,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Subcategory Analytics"
+        android:text="@string/SubcategoryAnalyticsLabel"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +77,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
-        android:text="Insurance "
+        android:onClick="ViewInsurance"
+        android:text="@string/InsuranceLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SpendingBreakdownLabel" />
 
@@ -82,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Total Spending Breakdown of This Year"
+        android:text="@string/TotalSpendingBreakdownLabel"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +99,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:text="Lodging"
+        android:onClick="ViewLodging"
+        android:text="@string/LodgingLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/InsuracnceButton" />
 
@@ -104,7 +110,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:text="Eating Out"
+        android:onClick="ViewFastFood"
+        android:text="@string/EatingOutLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LodgingCostButton" />
 
@@ -114,7 +121,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
-        android:text="Lifestyle"
+        android:onClick="ViewLifestyle"
+        android:text="@string/LifestyleLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SpendingBreakdownLabel" />
 
@@ -124,7 +132,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:text="Entertainment"
+        android:onClick="ViewEntertainment"
+        android:text="@string/EntertainmentLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LifestyleButton" />
 
@@ -134,7 +143,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:text="Miscellaneous"
+        android:onClick="ViewMiscellaneous"
+        android:text="@string/MiscLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EntertainmentButton" />
 </android.support.constraint.ConstraintLayout>
