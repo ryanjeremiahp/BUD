@@ -12,6 +12,15 @@
         <item android:id="@+id/nav_addTransaction"
             android:icon="@drawable/ic_addtransaction"
             android:title="Transactions"/>
+        <item
+            android:id="@+id/nav_activityAccounts"
+            android:icon="@drawable/ic_accounts"
+            android:title="Accounts"
+            />
+        <item
+            android:id="@+id/nav_analysis"
+            android:icon="@drawable/ic_bargraph_foreground"
+            android:title="Analysis"/>
     </group>
 
 

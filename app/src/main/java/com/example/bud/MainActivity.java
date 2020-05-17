@@ -1,8 +1,5 @@
 package com.example.bud;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -51,22 +48,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_addTransaction);
         }
 
-      /*  //Wilfredo wrote these two lines
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        mDatabase = dbHelper.getWritableDatabase();*/
     }
 
-  /*  private Cursor getAllItems() {
-        return mDatabase.query(
-                DatabaseHelper.TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                DatabaseHelper.Date_COL3 + "DESC");
-        )
-    }*/
+
 
 
     @Override
@@ -83,6 +67,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_addTransaction:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new TransactionFragment()).commit();
+                break;
+            case R.id.nav_activityAccounts:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new AccountsFragment()).commit();
+                break;
+            case R.id.nav_analysis:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new AnalyticsFragment()).commit();
+
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

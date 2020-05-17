@@ -74,11 +74,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         long result = database.insert(TABLE_NAME, null, contentValues);
 
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        return result != -1;
 
     }
 
