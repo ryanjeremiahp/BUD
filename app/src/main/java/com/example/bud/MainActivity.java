@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_analysis:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AnalyticsFragment()).commit();
+                break;
             case R.id.nav_subanalytics:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SubAnalyticsFragment()).commit();
