@@ -17,6 +17,7 @@ public class AnalyticsFragment extends Fragment {
     @Override
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //Comment
          View v = inflater.inflate(R.layout.activity_analysis, container, false);
          Button toSubAnalytics = v.findViewById(R.id.moreAnalytics);
          toSubAnalytics.setOnClickListener(new View.OnClickListener() {
