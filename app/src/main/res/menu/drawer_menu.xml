@@ -21,10 +21,7 @@
             android:id="@+id/nav_analysis"
             android:icon="@drawable/ic_bargraph_foreground"
             android:title="Analytics"/>
-        <item
-            android:id="@+id/nav_subanalytics"
-            android:icon="@drawable/ic_bargraph_foreground"
-            android:title="Sub Analytics"/>
+
     </group>
 
 

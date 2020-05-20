@@ -1,11 +1,16 @@
 package com.example.bud;
 
+import android.content.Intent;
 import android.database.Cursor;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 
 public class AnalysisActivity extends AppCompatActivity {
     DatabaseHelper database;
@@ -30,6 +35,8 @@ public class AnalysisActivity extends AppCompatActivity {
         database = globalClass.getDatabase();
 
         initializer();
+
+
     }
 
     public void initializer() {
@@ -61,6 +68,8 @@ public class AnalysisActivity extends AppCompatActivity {
         monthTotalSpent = Double.parseDouble(temp[0]);
         String[] temp2 = database.getTimeTotal(yearList).split(" ", 2);
         yearTotalSpent = Double.parseDouble(temp2[0]);
+
+
     }
 
     public void ViewAllTransactions(View view) {
@@ -256,4 +265,7 @@ public class AnalysisActivity extends AppCompatActivity {
         builder.setMessage(message);
         builder.show();
     }
+
+
+
 }

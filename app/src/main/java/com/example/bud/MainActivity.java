@@ -1,5 +1,6 @@
 package com.example.bud;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,14 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     GlobalClass globalClass;
     private DrawerLayout drawer;
-    //Wilfredo made these two lines'
-    /*private SQLiteDatabase mDatabase;
-    private FinanceAdapter mAdapter;*/
-
     public DatabaseHelper database;
 
     @Override
@@ -48,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_addTransaction);
         }
 
+
     }
 
 
@@ -75,10 +75,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_analysis:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AnalyticsFragment()).commit();
-                break;
-            case R.id.nav_subanalytics:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SubAnalyticsFragment()).commit();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
