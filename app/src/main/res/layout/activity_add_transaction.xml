@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -15,11 +15,12 @@
         android:id="@+id/TransactionDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:text="@string/TransactionDetailsLabel"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,8 +29,10 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="52dp"
         android:text="@string/AccountNameLabel"
         android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/AccountChooser"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TransactionDetails" />
 
@@ -49,22 +52,24 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="25dp"
         android:text="@string/DateLabel"
         android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/DateEntered"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AccountNameLabel" />
 
     <EditText
         android:id="@+id/DateEntered"
-        android:layout_width="250dp"
+        android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/EnterDateHint"
         android:importantForAutofill="no"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AccountNameLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/AccountChooser" />
 
     <TextView
         android:id="@+id/Total"
@@ -190,4 +195,4 @@
 
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

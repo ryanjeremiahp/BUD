@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "29001918326",
+    "firebase_url": "https://budtextrecognition.firebaseio.com",
+    "project_id": "budtextrecognition",
+    "storage_bucket": "budtextrecognition.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29001918326:android:51bc5f468ef372dacf7c57",
+        "android_client_info": {
+          "package_name": "com.example.bud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29001918326-desjfjsblhv6cbve3c5vf52bc7ghhfnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHNKswPPcpzmUlIp18CIaE4NJJaeCr2gM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "29001918326-desjfjsblhv6cbve3c5vf52bc7ghhfnd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

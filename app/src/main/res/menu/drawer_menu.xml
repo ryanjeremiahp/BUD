@@ -21,6 +21,10 @@
             android:id="@+id/nav_analysis"
             android:icon="@drawable/ic_bargraph_foreground"
             android:title="Analytics"/>
+        <item
+            android:id="@+id/nav_AI"
+            android:icon="@drawable/ic_statistics"
+            android:title="AI"/>
 
     </group>
 
